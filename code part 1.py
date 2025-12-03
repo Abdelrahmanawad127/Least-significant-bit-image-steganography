@@ -72,6 +72,19 @@ for i in range(0, len(flattening), 3):
     green = flattening[i + 1]
     blue = flattening[i + 2]
     new_pixels.append((red, green, blue))
+    new_data = bytearray(data)
+pixel_index = 0
+for i in range(pixel_offset, len(new_data) - 2, 3):
+    red, green, blue = new_pixels[pixel_index]
+    new_data[i] = blue
+    new_data[i + 1] = green
+    new_data[i + 2] = red
+    pixel_index += 1
+with open(output_path, "wb") as f:
+    f.write(new_data)
+    print("Message hidden successfully!")
+    print("Image saved as", output_path)
     
+
 
 
