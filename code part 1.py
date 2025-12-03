@@ -25,3 +25,4 @@ if message.lower().endswith(".txt"):
     except:
         print("can't open file for unknown reason")
         exit()
+
