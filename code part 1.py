@@ -66,5 +66,12 @@ for i in range(len(message_in_binary)):
     component_lsb = flattening[i] & 1
     if message_bit != component_lsb:
         flattening[i] = flattening[i] ^ 1
+new_pixels = []
+for i in range(0, len(flattening), 3):
+    red = flattening[i]
+    green = flattening[i + 1]
+    blue = flattening[i + 2]
+    new_pixels.append((red, green, blue))
+    
 
 
