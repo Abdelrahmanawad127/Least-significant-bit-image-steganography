@@ -8,13 +8,3 @@ for i in range(pixel_offset, len(data)-2, 3):
     g = data[i+1] & 1
     r = data[i+2] & 1
     bits += str(r) + str(g) + str(b)
-message = ""
-end_point = "this_is_the_end"
-for i in range(0, len(bits), 8):
-    byte = bits[i:i+8]
-    char = chr(int(byte, 2))
-    message += char
-    if message[-len(end_point):]==end_point:
-        message = message.replace(end_point, "")
-        break
-print("Decoded message:", message)
