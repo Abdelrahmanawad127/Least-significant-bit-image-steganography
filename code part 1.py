@@ -51,5 +51,20 @@ for i in range(pixel_offset, len(data) - 2, 3):
     green = data[i + 1]
     red = data[i + 2]
     pixels.append((red, green, blue))
+flattening = []
+for (red, green, blue) in pixels:
+    flattening += [red, green, blue]
+needed_bits = len(message_in_binary)
+available_bits = len(flattening)
+if needed_bits > available_bits:
+    print(f"Error: Message is too large for this image")
+    print(f"Message requires {needed_bits} bits, but image only has {available_bits} bits available")
+    print(f"Maximum message length: {available_bits // 8} characters")
+    exit()
+for i in range(len(message_in_binary)):
+    message_bit = int(message_in_binary[i])
+    component_lsb = flattening[i] & 1
+    if message_bit != component_lsb:
+        flattening[i] = flattening[i] ^ 1
 
 
